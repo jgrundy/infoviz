@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>D3.js Lab 1 JDG526</title>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            h1 {
+                background-color: black;
+                color: white;
+            }
+            div {
+                padding-left: 10px;
+            }
+            h2 {
+                font-style: bold;
+            }
+            .line-separator {
+                height: 4px;
+                border-bottom: 1px solid #D3D3D3;
+            }
+            ul li {
+                list-style: none;
+                text-indent: -40px;
+                padding-bottom: 8px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1>Gapminder - Wealth and Health of Nations</h1>
+        <div>
+            <h2>Countries</h2>
+            <ul id="viz">
+            </ul>
+        </div>
+    </body>
+    
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+       var viz = d3.select("#viz");
+        
+        var countries = d3.json("https://raw.githubusercontent.com/CristianFelix/infoviz/master/gapminder.json", function(error, result) {
+            countries = result;
+            render();
+        })
+        
+        function render() {
+            var changes = viz.selectAll("li")
+                .data(countries, function(d) {return d.name});
+            
+            changes.enter()
+                    .append("li")
+                    .text(function(d) {return d.name});
+        }
+    </script>
+</html>

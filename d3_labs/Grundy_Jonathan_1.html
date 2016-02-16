@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>D3.js Lab 1 JDG526</title>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            h1 {
+                background-color: black;
+                color: white;
+            }
+            div {
+                padding-left: 10px;
+            }
+            h2 {
+                font-style: bold;
+            }
+            .line-separator {
+                height: 4px;
+                border-bottom: 1px solid #D3D3D3;
+            }
+            ul li {
+                list-style: none;
+                text-indent: -40px;
+                padding-bottom: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Gapiminder - Wealth and Health of Nations</h1>
+        <div>
+            <h2>Countries</h2>
+            <label>Name</label>
+            <input type='text' id="textInput">
+            <input  type='button' value='Add' onclick="addCountry();">
+            <div class="line-separator"></div>
+            <ul id="log">
+                <li>USA</li>
+                <li>Mexico</li>
+                <li>Canada</li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        function logCountry(newCountry) {
+            var log = document.getElementById("log");
+            var newEntry = document.createElement("li");
+            newEntry.innerHTML = newCountry;
+            log.appendChild(newEntry);
+        }
+        
+        function addCountry() {
+            var newCountry = document.getElementById("textInput").value;
+            logCountry(newCountry);
+            document.getElementById("textInput").value = "";
+        }
+    </script>
+</html>
